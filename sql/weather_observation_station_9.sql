@@ -1,0 +1,3 @@
+/*  ^[] for beginning character */
+
+SELECT DISTINCT CITY FROM STATION WHERE NOT REGEXP_LIKE(LOWER(CITY), '^[aeiou]'); 
