@@ -8,15 +8,16 @@ using namespace std;
 
 int main() {
     int n;
-    int arr[n];
-    std::vector<int> v;
-   
     cin >> n;
-    cin >> arr[0], arr[1], arr[2], arr[3];
     
-    v = arr;
-    std::reverse(v.begin(), v.end());
-    cout << arr;
+    int a[n];
+    for (int i = 0; i <= n; i++) {
+        cin >> a[i];
+    }
+    
+    for (int i = n - 1; i >= 0; i--) {
+        cout << a[i] << ' ';
+    }
     
     return 0;
 }
