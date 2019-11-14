@@ -1,26 +1,30 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 
 // & address
 // * dereferencing 
 
-void update(int *a,int *b) {
+void update(int *a, int *b) {
+    int x, y;
 
-    x = a + b;
-    y = abs(a - b);
-
-    return a, b;
+    x = (*a + *b);
+    y = abs(*a - *b);
+    
+    *a = x;
+    *b = y;
 }
 
 int main() {
     int a, b;
-    // pa points to address of val a
+    // assign pointer pa to memory address of a, b
     int *pa = &a, *pb = &b;
-    // read a, b vals
+    // read ints a, b
     scanf("%d %d", &a, &b);
+    // pointers pa, pb = inputs to update fn
+    // fn returns dereferenced pointers modified by fn
     update(pa, pb);
     printf("%d\n%d", a, b);
 
     return 0;
 }
-
