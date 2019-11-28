@@ -1,29 +1,25 @@
 #! /bin/python3
 
-import math
-import os
-import sys
-from dateutil import parser
 import datetime as dt
+from dateutil import parser
 
 def time_delta(t1, t2):
-    t1 = parser.parse(t1)
-    t2 = parser.parse(t2)
+    t1 = dt.datetime.strptime(t1, "%a %d %B %Y %H:%M:%S %z")
+    t2 = dt.datetime.strptime(t2, "%a %d %B %Y %H:%M:%S %z")
     
-    delta = t2 - t1
-    seconds = delta.seconds
-    return(seconds)
-
+    delta = str(int(abs(t1 - t2).total_seconds()))
+    return(delta)
 
 if __name__ == '__main__':
-    fptr = open(os.environ['OUTPUT_PATH'], 'w')
-    t = int(input())
-
-    for t_itr in range(t):
+    n = int(input())
+    arr = []
+    
+    for num in range(n):
         t1 = input()
         t2 = input()
+        arr.append((t1, t2))
 
-        delta = str(time_delta(t1, t2))
-        fptr.write(delta + '\n')
+    deltas = [time_delta(x, y) for x, y in arr]
+    for val in deltas:
+        print(val)
 
-    fptr.close()
